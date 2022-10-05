@@ -33,6 +33,8 @@ The command also installs all necessary dependencies you need to run Docusaurus.
 
 ## Start your site
 
+Ready to Run
+
 Run the development server:
 
 ```bash
