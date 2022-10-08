@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[570],{6506:e=>{e.exports=JSON.parse('{"title":"DevOps","description":"DevOps ","slug":"/category/devops","permalink":"/category/devops","navigation":{"previous":{"title":"Role Based","permalink":"/category/role-based"},"next":{"title":"A-essentials","permalink":"/role-based/devops/A-essentials"}}}')}}]);

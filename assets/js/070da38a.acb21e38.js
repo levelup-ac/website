@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[204],{2060:e=>{e.exports=JSON.parse('{"title":"Role Based","description":"Role based content","slug":"/category/role-based","permalink":"/category/role-based","navigation":{"previous":{"title":"Wellcome","permalink":"/"},"next":{"title":"DevOps","permalink":"/category/devops"}}}')}}]);
