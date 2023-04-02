@@ -1,0 +1,172 @@
+---
+sidebar_label: 'A: Basic Context'
+tags:
+  - partial
+---
+
+# Load Modules and SUM
+
+
+```golang title="main.go"
+package main
+
+import (
+        "encoding/json"
+        "flag"
+        "fmt"
+        "io/ioutil"
+        "log"
+
+        v1 "k8s.io/api/core/v1"
+)
+```
+
+
+```shell
+main.go:10:5: cannot find package "k8s.io/api/core/v2" in any of:
+        ~/.asdf/installs/golang/1.18.4/go/src/k8s.io/api/core/v2 (from $GOROOT)
+        ~/gocode/src/k8s.io/api/core/v2 (from $GOPATH)
+
+```
+
+```golang
+// initialize the module k8s.io/api/core
+// needed in main.go line v1 "k8s.io/..."
+go mod init k8s.io/api/core
+
+// add missing and remove unused modules
+go mod tidy
+```
+
+
+
+```
+#!/usr/bin/env python 
+
+import os, yaml, time 
+
+#def my_input(): 
+
+#  raw_workload_objects = 'oc get po -A -o yaml >> ./raw-workload-objects.yaml' 
+
+#  os.system(raw_workload_objects) 
+
+def my_output(): 
+
+  use_workload_objects = 'cat ./raw-workload-objects.csv | grep -E "gsnetcloud|PodName|PodNamespace|ContainerName|ContainerImage" > use-workload-objects.csv' 
+
+  os.system(use_workload_objects) 
+
+def my_loop(): 
+
+  with open('raw-workload-objects.yaml') as f: 
+
+      # pod_list = yaml.load(f,Loader=yaml.FullLoader) 
+
+      pod_list = yaml.safe_load(f) 
+
+      print(type(pod_list)) 
+
+#  for key in pod_list: 
+
+#      print(key) 
+
+  # file = open("./raw-workload-objects.csv", "w") 
+
+  with open('raw-workload-objects.csv', "w") as file: 
+
+      file.write("PodName\tPodNamespace\tContainerName\tContainerImage\n") 
+
+      # for item in pod_list['items']: 
+
+      #    print(item.keys()) 
+
+      numline = 0 
+
+      for item in pod_list['items']: 
+
+          # time.sleep(0.1) 
+
+          print(item.keys()) 
+
+          pod_name = item['metadata']['name'] 
+
+          pod_namespace = item['metadata']['namespace'] 
+
+          container_list = item['spec']['containers'] 
+
+          status_list = None 
+
+          if 'containerStatuses' in item['status']: 
+
+              status_list = item['status']['containerStatuses'] 
+
+          #print(pod_name) 
+
+          #print(pod_namespace) 
+
+          #print(container_list) 
+
+          for container in container_list: 
+
+              container_name = container['name'] 
+
+          if status_list is not None: 
+
+              for status in status_list: 
+
+                  container_image = status['image'] 
+
+                  file.write(pod_name + '\t' + pod_namespace + '\t' + container_name + '\t' + container_image + '\n') 
+
+# my_input() 
+
+my_loop() 
+
+my_output()
+
+```
+
+
+```
+  pod_name  '.items[].metadata.name'
+    cat samplePodList.json | jq '.items[].metadata.name'
+    jq -r '.items[].metadata.name' samplePodList.json
+
+  pod_namespace '.items[].metadata.namespace'
+    cat samplePodList.json | jq '.items[].metadata.namespace'
+    jq -r '.items[].metadata.namespace' samplePodList.json
+
+  container_name '.items[].spec.containers[].name'
+    cat samplePodList.json | jq '.items[].spec.containers[].name'
+    jq -r '.items[].spec.containers[].name' samplePodList.json
+
+  container_image '.items[].status.containerStatuses[].image'
+    cat samplePodList.json | jq '.items[].status.containerStatuses[].image'
+    jq -r '.items[].spec.containers[].name' samplePodList.json
+
+  pod_phase: .items[].status.phase 
+    cat samplePodList.json | jq '.items[].status.phase'
+    jq -r '.items[].status.phase' samplePodList.json
+```
+
+
+```
+Segun hemos hablado, confirmarte que mi ultimo dia en el squad sera el viernes 4 de noviembre.
+
+Desde ya agradecerte la oprtunidad de avanzar profecionalmente en cada uno de los proyectos y tareas encomendadas.
+
+Anibal Aguila
+
+
+
+Production - tools
+cloud - tools
+Victor
+
+```
+
+
+
+
+
